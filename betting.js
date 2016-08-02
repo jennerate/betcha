@@ -15,7 +15,7 @@ var buttonTwo = document.getElementById('button_two');
 
 //randomizes a number between the range
 function getRandomIntInclusive() {
-   return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+   return Math.floor(Math.random() * 10) + 1;
 }
 
 buttonOne.addEventListener('click', function(event) {
@@ -26,11 +26,12 @@ buttonOne.addEventListener('click', function(event) {
         text: "Your bet has to be between 5 and 10.",
         type: "error",
         confirmButtonText: "Alright!"
-      })
+      })}
+    else {
+      swal("Good job!", "You clicked the button!", "success")
     }
-});
-
-buttonTwo.addEventl
+  }
+);
 
 // //function that checks if randomized num = guessed num
 buttonTwo.addEventListener('click', function(event) {
@@ -41,12 +42,11 @@ buttonTwo.addEventListener('click', function(event) {
       swal("Great guess! Your balance is: "+ balance, "success");
       break;
     case 1:
-      balance += 0
       swal("Close, but no cigar.", "Your balance is: " + balance);
       break;
     default:
       balance -= 2
-      sweetAlert("Yikes!", "Better luck next time, your balance is " + balance, "error");
+      sweetAlert("Yikes!", "Better luck next time, your balance is: " + balance +  "\n This was the winning number: " + winningNum, "error");
       break;
   }
 });
